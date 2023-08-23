@@ -1,0 +1,189 @@
+unsigned long Real_time_millis = 0;
+unsigned long Previous_read_time_millis = 0;
+float SEC;
+float MIN = 45;
+float HOUR = 2;
+float dots_marker = 0;
+
+
+unsigned long currentMillis, elapsed_loop_counter, previousMillis, delayTime;
+unsigned long counter_1, current_counter;
+
+byte last_IN_state;
+float one_rot_time = 0;
+float timer_per_deg = 0;
+
+int a[]={126,144,144,144,126};
+int b[]={126,144,144,144,126};
+int c[]={126,144,144,144,126};
+
+void setup() {
+  // put your setup code here, to run once:
+ PCICR |= (1<<PCIE0); // used to enable pcmask zero scan
+ PCMSK0 |= (1 << PCINT5); // used to enable pin state interruption on pin dx 3
+ /*pinMode(2, OUTPUT);
+  pinMode(2, OUTPUT);
+   pinMode(2, OUTPUT);
+    pinMode(2, OUTPUT);
+     pinMode(2, OUTPUT);
+      pinMode(2, OUTPUT);
+       pinMode(2, OUTPUT);
+        pinMode(2, OUTPUT);
+         pinMode(2, OUTPUT);
+          pinMode(2, OUTPUT);
+           pinMode(2, OUTPUT);*/
+           DDRD |= B11111100;  // 2-7 OUTPUT (register manupulation)  //  THESE LINES ASSIGN VALUE AS OUTPUT
+           DDRB |= B00011111;  // 3-12 OUTPUT (rehgister manupulation)   ???????
+           DDRB &= B11011111; // 13 input 
+           PORTD &= B00000011; //SET ACTUAL VALUES ON AND OFF
+           PORTB &= B11100000; // TO SEND 0,S TO OUTPUT PINS
+ }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  currentMillis = micros();
+  elapsed_loop_counter = currentMillis - previousMillis;
+  delayTime = timer_per_deg*3.5;
+
+  if((elapsed_loop_counter >= timer_per_deg*(216)) && (elapsed_loop_counter < timer_per_deg*(217)) && text_ok = 1)
+  {
+    displayString("HELLO I LOVE YOU",delayTime);
+    text_ok=0;
+  }
+
+}
+
+
+void draw_a_line(int this_line)
+{
+  int now_line;
+  now_line = this_line;
+    if(now_line>=128)
+  {
+    PORTB |= B00100000;
+     now_line-=128;
+  }
+  else {
+    PORTB &= B11011111;
+  }
+}
+  if(now_line>=64)
+  {
+    PORTB |= B01000000;
+     now_line-=64;
+  }
+  else {
+    PORTB &= B10111111;
+  }
+}
+  if(now_line>=32)
+  {
+    PORTB |= B10000000;
+     now_line-=32;
+  }
+  else {
+    PORTB &= B01111111;
+  }
+}
+  if(now_line>=16)
+  {
+    PORTB |= B00000001;
+     now_line-=16;
+  }
+  else {
+    PORTB &= B11111110;
+  }
+}
+  if(now_line>=8)
+  {
+    PORTB |= B00000010;
+     now_line-=8;
+  }
+  else {
+    PORTB &= B11111101;
+  }
+}
+  if(now_line>=4)
+  {
+    PORTB |= B00000100;
+     now_line-=4;
+  }
+  else {
+    PORTB &= B11111011;
+  }
+}
+  if(now_line>=2)
+  {
+    PORTB |= B00001000;
+     now_line-=2;
+  }
+  else {
+    PORTB &= B11110111;
+  }
+}
+  if(now_line>=1)
+  {
+    PORTB |= B00010000;
+     now_line-=1;
+  }
+  else {
+    PORTB &= B11101111;
+  }
+}
+
+void displayChar(char cr, float line_delay) 
+{
+  if(cr == 'a')
+  {
+    for(int i=0;i<5i++)
+    {
+      draw_a_line(a[i]);
+      delayMicroseconds(line_delay);
+    } draw_a_line(0);
+  }
+   if(cr == 'b')
+  {
+    for(int i=0;i<5i++)
+    {
+      draw_a_line(b[i]);
+      delayMicroseconds(line_delay);
+    } draw_a_line(0);
+  }
+   if(cr == 'c')
+  {
+    for(int i=0;i<5i++)
+    {
+      draw_a_line(c[i]);
+      delayMicroseconds(line_delay);
+    } draw_a_line(0);
+  }
+}
+
+void displayString(char* s, float line_delay)
+{
+  for(int i = 0;i<=strlen(s);i++)
+  {
+    displayChar(s[i],line_delay);
+  }
+
+}
+ 
+ ISR (PCINT0_vect)
+ {
+   current_count = micros();
+
+   if(PINB & B00100000){
+     if(last_in_state == 0){
+       last_in_state = 1;
+       counter_1 = current_count;
+     }
+   }
+   else if(last_IN_state == 1){
+     last_IN_state = 0;
+     one_rot_time = current_count - counter_1;
+     timer_per_deg = one_rot_time/360.0;
+     previousMillis =  micros();
+     text_ok = 1;
+   }
+ }
+
