@@ -1,0 +1,376 @@
+
+int StartPin = A7;
+
+int LED1 = 6;
+int LED2 = 7;
+int LED3 = 8;
+int LED4 = 9;
+int LED5 = 10;
+int LED6 = 11;
+int LED7 = 12;
+
+int i = 0;
+int j = 0;
+
+char TEXT[12];
+//char TEXT1[] = "--dhatt--teri--maa--ki--chut--";
+char TEXT1[] = "--HELLO--";
+char TEXT2[] = "--ILOVEU--";
+
+int txt = 9;
+int t = 5;
+
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);  // 9600 baud rate
+
+pinMode(LED1, OUTPUT);
+pinMode(LED2, OUTPUT);
+pinMode(LED3, OUTPUT);
+pinMode(LED4, OUTPUT);
+pinMode(LED5, OUTPUT);
+pinMode(LED6, OUTPUT);
+pinMode(LED7, OUTPUT);
+
+
+pinMode(13, OUTPUT);
+
+strcpy(TEXT,TEXT1);
+
+}
+
+void loop() {
+  int val = analogRead(StartPin);
+  if(val > 200){
+    j++;
+    
+    if(0*t <j && j< 10*t){
+      strcpy(TEXT,TEXT1);
+      }
+
+    if(10*t <j && j< 20*t){
+      strcpy(TEXT,TEXT2);
+      }
+
+      //----------------
+
+      if(txt<2 && j>10*t-1)
+      {
+        j=0;
+      }
+      if(txt<3 && j>20*t-1)
+      {
+        j=0;
+      }
+    Serial.print(j);
+    Serial.println(TEXT);
+
+    for(i=0;i<12;i++){
+      if(TEXT[i]=='A'){A();}
+      if(TEXT[i]=='B'){B();}
+      if(TEXT[i]=='C'){C();}
+      if(TEXT[i]=='D'){D();}
+      if(TEXT[i]=='E'){E();}
+      if(TEXT[i]=='F'){F();}
+      if(TEXT[i]=='G'){G();}
+      if(TEXT[i]=='H'){H();}
+      if(TEXT[i]=='I'){I();}
+      if(TEXT[i]=='J'){J();}
+      if(TEXT[i]=='K'){K();}
+      if(TEXT[i]=='L'){L();}
+      if(TEXT[i]=='M'){M();}
+      if(TEXT[i]=='N'){N();}
+      if(TEXT[i]=='O'){O();}
+      if(TEXT[i]=='P'){P();}
+      if(TEXT[i]=='Q'){Q();}
+      if(TEXT[i]=='R'){R();}
+      if(TEXT[i]=='S'){S();}
+      if(TEXT[i]=='T'){T();}
+      if(TEXT[i]=='U'){U();}
+      if(TEXT[i]=='V'){V();}
+      if(TEXT[i]=='W'){W();}
+      if(TEXT[i]=='X'){X();}
+      if(TEXT[i]=='Y'){Y();}
+      if(TEXT[i]=='Z'){Z();}
+
+    }
+  }
+
+
+}
+
+void A()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,1,1,1,1);
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0); 
+  signal(0,1,1,1,1,1,1);
+}
+
+void B()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,0,1,1,0);
+  signal(1,0,0,1,0,0,1);
+  signal(1,0,0,1,0,0,1);
+  signal(1,0,0,1,0,0,1); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void C()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1); 
+  signal(0,1,1,1,1,1,1);
+}
+
+void D()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,1,1,1,0);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void E()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,1,0,0,1);
+  signal(1,0,0,1,0,0,1);
+  signal(1,0,0,1,0,0,1);
+  signal(1,0,0,1,0,0,1); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void F()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void G()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,1,1,1);
+  signal(1,0,0,0,1,0,1);
+  signal(1,0,0,0,1,0,1);
+  signal(1,0,0,0,0,0,1); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void H()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,1,1);
+  signal(0,0,0,1,0,0,0);
+  signal(0,0,0,1,0,0,0);
+  signal(0,0,0,1,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void I()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1);
+  signal(1,1,1,1,1,1,1);
+  signal(1,0,0,0,0,0,1); 
+  signal(1,0,0,0,0,0,1);
+}
+
+void J()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,1,0);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1); 
+  signal(1,0,0,0,1,1,0);
+}
+void K()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,0,0,1);
+  signal(0,1,0,0,0,1,0);
+  signal(0,0,1,0,1,0,0);
+  signal(0,0,0,1,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void L()
+{  // A rotated at 90 degree join all one
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,0,0,1); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void M()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,1,1);
+  signal(0,1,0,0,0,0,0);
+  signal(0,0,1,0,0,0,0);
+  signal(0,1,0,0,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void N()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,1,1);
+  signal(0,0,0,0,0,1,0);
+  signal(0,0,1,1,1,0,0);
+  signal(0,1,0,0,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+
+void O()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,1,1,1,0);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1);
+  signal(1,0,0,0,0,0,1); 
+  signal(0,1,1,1,1,1,0);
+}
+void P()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,0,0,0,0);
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0);
+  signal(1,0,0,1,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+void Q()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,1,1,0,0);
+  signal(1,0,0,0,0,1,1);
+  signal(1,0,0,0,0,1,0);
+  signal(1,0,0,0,0,1,0); 
+  signal(1,1,1,1,1,0,0);
+}
+void R()
+{  // A rotated at 90 degree join all one
+  signal(0,1,1,0,0,0,1);
+  signal(1,0,0,1,0,1,0);
+  signal(1,0,0,1,1,0,0);
+  signal(1,0,0,1,0,0,0); 
+  signal(1,1,1,1,1,1,1);
+}
+void S()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,0,1,0);
+  signal(1,0,0,0,1,0,1);
+  signal(1,0,0,1,0,0,1);
+  signal(1,0,1,0,0,0,1); 
+  signal(0,1,0,0,0,0,1);
+}
+void T()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,0,0,0);
+  signal(1,0,0,0,0,0,0);
+  signal(1,1,1,1,1,1,1);
+  signal(1,0,0,0,0,0,0); 
+  signal(1,0,0,0,0,0,0);
+}
+void U()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,1,0);
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,0,0,1); 
+  signal(1,1,1,1,1,1,0);
+}
+void V()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,0,0);
+  signal(0,0,0,0,0,1,0);
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,0,1,0); 
+  signal(1,1,1,1,1,0,0);
+}
+void W()
+{  // A rotated at 90 degree join all one
+  signal(1,1,1,1,1,1,0);
+  signal(0,0,0,0,0,0,1);
+  signal(0,0,0,0,1,1,0);
+  signal(0,0,0,0,0,0,1); 
+  signal(1,1,1,1,1,1,0);
+}
+void X()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,1,0,0);
+  signal(0,1,0,1,0,0,0);
+  signal(0,0,1,0,0,0,0);
+  signal(0,1,0,1,0,0,0); 
+  signal(1,0,0,0,1,0,0);
+}
+
+void Y()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,0,0,0);
+  signal(0,1,0,0,0,0,0);
+  signal(0,0,1,1,1,1,1);
+  signal(0,1,0,0,0,0,0); 
+  signal(1,0,0,0,0,0,0);
+}
+void Z()
+{  // A rotated at 90 degree join all one
+  signal(1,0,0,0,1,0,0);
+  signal(1,1,0,0,1,0,0);
+  signal(1,0,1,0,1,0,0);
+  signal(1,0,0,1,1,0,0); 
+  signal(1,0,0,0,1,0,0);
+}
+void signal(int d1, int d2, int d3, int d4, int d5, int d6, int d7)
+{
+  if(d1==1){
+    digitalWrite(LED1, HIGH);
+  }
+  else{
+    digitalWrite(LED1, LOW);
+  }
+   if(d1==2){
+    digitalWrite(LED2, HIGH);
+  }
+  else{
+    digitalWrite(LED2, LOW);
+  }
+   if(d1==3){
+    digitalWrite(LED3, HIGH);
+  }
+  else{
+    digitalWrite(LED3, LOW);
+  }
+   if(d1==4){
+    digitalWrite(LED4, HIGH);
+  }
+  else{
+    digitalWrite(LED4, LOW);
+  }
+   if(d1==5){
+    digitalWrite(LED5, HIGH);
+  }
+  else{
+    digitalWrite(LED5, LOW);
+  }
+   if(d1==6){
+    digitalWrite(LED6, HIGH);
+  }
+  else{
+    digitalWrite(LED6, LOW);
+  }
+   if(d1==7){
+    digitalWrite(LED7, HIGH);
+  }
+  else{
+    digitalWrite(LED7, LOW);
+  }
+
+  delay(1);
+}
+
+
+
+
+
